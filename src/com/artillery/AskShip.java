@@ -1,8 +1,8 @@
 package com.artillery;
 
 
-public class AskShip {
-    public ShipType askUserShip(){
+public class AskShip implements UserQuestion<ShipType> { //notice similarities between UserQuestion and this
+    public ShipType userInput(){
         ShipType chosenShip;
 
         String userOutput = BufferedReaderClass.readLine("What is the ship you want to place?");

@@ -2,8 +2,8 @@ package com.artillery;
 
 import java.io.IOException;
 
-public class ShipOrienting {
-    public ShipOrientation orientMyShip() {
+public class ShipOrienting implements UserQuestion<ShipOrientation> { // compare to AskShip. We were able to use generics
+    public ShipOrientation userInput() {
         ShipOrientation output = null;
 
         while (output == null) {
