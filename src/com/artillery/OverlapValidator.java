@@ -1,6 +1,6 @@
 package com.artillery;
 //Must tell this class that we are trying to fulfill PositionValidator contract
-public class OverlapValidator implements PositionValidator {
+public class OverlapValidator implements Validator {
     @Override
     public boolean validate(ProgramData data, ShipType[][] grid) {
 

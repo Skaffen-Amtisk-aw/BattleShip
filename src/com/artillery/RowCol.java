@@ -11,9 +11,10 @@ public class RowCol {
     }
 
     private int row;
-    private final int column;
+    private int column;
 
-    public RowCol(InputAbstraction input, OutputAbstraction output) { //Changed from Input to InputAbstraction datatype, went from specific to vague
+
+    public void getRowCol(InputAbstraction input, OutputAbstraction output) { //Changed from Input to InputAbstraction datatype, went from specific to vague
         //this function will take user input and convert it to ... i need the return type to be CellState so i can slap it into the array right??
         // take user location input e,g, H6 and return a cell state with corresponding array location e.e. Cellstate [H as int] [6]
         String unverifiedOutput; //trying this
@@ -37,7 +38,7 @@ public class RowCol {
             String stringColNum = unverifiedOutput.substring(1); // grabbing characters starting from index 1
             int col = Integer.parseInt(stringColNum); // converting stringy to inty
             if (1 <= col && col <= 10) {
-                column = col-1; // added -1 due to column shift
+                column = col - 1; // added -1 due to column shift
                 break;
             } else {
                 output.printOut("Plz enter number 1 thru 10."); //OK??
@@ -46,11 +47,15 @@ public class RowCol {
 //            if (grid[row][column] != ShipType.OPEN){  // We made a class that handles checking for overlaps
 //                System.out.println("A ship already occupies this space, please enter a different coordinate");
 //                userOutput = null;
-            }
-
         }
 
-//    }
+    }
+
+    public void compRowCol(int numRow, int numCol){
+        row = numRow;
+        column = numCol;
+
+    }
 
     public String toString() {
         return "Row is " + row + ". Column is " + column; // is actually a viable technique

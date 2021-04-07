@@ -12,7 +12,8 @@ public class TestRowCol {
         FakeInput fakeInput = new FakeInput();
         Output realOutput = new Output();
 
-        test = new RowCol(fakeInput, realOutput);
+        test = new RowCol();
+        test.getRowCol(fakeInput,realOutput);
 
     }
 

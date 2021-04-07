@@ -1,6 +1,5 @@
 package com.artillery;
 
-import java.io.*;
 import java.lang.*;
 
 public class ShipPlacement {
@@ -11,7 +10,9 @@ public class ShipPlacement {
     private ShipType chosenShip;
 
 
-
+    public ShipType[] getShipLib() {
+        return shipLib;
+    }
 
 
     public ShipPlacement() { // THIS IS A CONSTRUCTOR
@@ -74,12 +75,12 @@ public class ShipPlacement {
         //this function will take user input and convert it to ... i need the return type to be CellState so i can slap it into the array right??
         // take user location input e,g, H6 and return a cell state with corresponding array location e.e. Cellstate [H as int] [6]
 
-            PositionValidator[] validators = new PositionValidator[2]; // can use this interface array instead of multiple && conditions in if statement. We would not be able to use this without an interface
+            Validator[] validators = new Validator[2]; // can use this interface array instead of multiple && conditions in if statement. We would not be able to use this without an interface
             validators[0] = new OverlapValidator();
             validators[1] = new OutOfBoundsChecker();
             boolean isInvalid = false;
 // Update loop to 1. ask for all info again, and 2. do it in a way that makes sense (is there a way to package validators and program data together in discrete loop? maybe on main?
-            for (PositionValidator validator: validators){ // this is "for each" loop, for (<each element> : <designated innumerable object>)
+            for (Validator validator: validators){ // this is "for each" loop, for (<each element> : <designated innumerable object>)
                 if (!validator.validate(data, grid)){
                     System.out.println("Ship placement invalid, please choose a different orientation");
 

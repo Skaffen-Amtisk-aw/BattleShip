@@ -1,6 +1,6 @@
 package com.artillery;
 
-public class OutOfBoundsChecker implements PositionValidator {
+public class OutOfBoundsChecker implements Validator {
     @Override
 
     public boolean validate(ProgramData data, ShipType[][] grid) {

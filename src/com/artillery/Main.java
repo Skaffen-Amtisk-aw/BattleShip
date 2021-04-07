@@ -1,44 +1,81 @@
 package com.artillery;
 
-import java.io.IOException;
-
 public class Main {
+// Variable declaration should happen within the smallest scope (Read: curly brackets) possible
+    public static void main(String[] args) {
+	    BattleField userGrid = new BattleField();//calling constructor here, must say "new" for java remember to denote data type before variable name
+        BattleField compGrid = new BattleField();
 
-    public static void main(String[] args) throws IOException {
-	    BattleField grid = new BattleField(); //calling constructor here, must say "new" for java remember to denote data type before variable name
-        ShipPlacement fleet = new ShipPlacement();
+        ShipPlacement userFleet = new ShipPlacement();
+        ShipPlacement compFleet = new ShipPlacement();
+
+
+
+
+        ProgramData data;
+        ProgramData compData;
+
         AskShip chosenShip = new AskShip();
         ShipOrienting orient = new ShipOrienting();
         PlaceShip placement = new PlaceShip();
         Input input = new Input();
         Output output = new Output();
-        ProgramData data;
+
         boolean isInvalid;
 
+        //Computer section**********************************
 
 
-        System.out.println(grid.shipToString()); // every object has a toString method, we just commandeered it so we can give our grid representation in this case
-
-        // The setup!!
-        while ( !fleet.allBoatsPlaced() ){ // shiplib is now private, make sure to understand the reasoning behind why fields should almost always be private
-
-            fleet.printRemainingShips();
-            ShipType myShip = chosenShip.userInput();
-            fleet.keepTrack(myShip);
+        while (!compFleet.allBoatsPlaced() ){
+            System.out.println("computer populates grid...");
+            compFleet.printRemainingShips(); // Test to ensure comp does it all
+            ShipType compShip;
+            compShip = chosenShip.compChoose(compFleet.getShipLib());
+            compFleet.keepTrack(compShip);
 
             do{
-                System.out.println(grid.shipToString());
 
-                RowCol rowColumn = new RowCol(input, output);// Determine rows and column of ship start
+                RowCol compRowColumn = new RowCol();
+                RandomNumberInterface compNumbers = new CompCalcs(); // compNumbers is now beholden to our interface we created through the "implements..." line in CompCalcs
+
+                compRowColumn.compRowCol(compNumbers.makeRandomNumber(9), compNumbers.makeRandomNumber(9));
+                ShipOrientation compOrientation = orient.CompShipOrientation();
+                compData = new ProgramData(compRowColumn.getRow(), compRowColumn.getColumn(), compShip, compOrientation);
+                isInvalid = compFleet.validPlace(compData, compGrid.shipGrid);
+
+            } while(isInvalid);
+
+            placement.placeMyShip(compData, compGrid.shipGrid);
+
+            System.out.println(compGrid.shipToString());
+
+
+        }
+
+        System.out.println(userGrid.shipToString()); // every object has a toString method, we just commandeered it so we can give our grid representation in this case
+
+        // The setup!!
+        while ( !userFleet.allBoatsPlaced() ){ // shiplib is now private, make sure to understand the reasoning behind why fields should almost always be private
+
+            userFleet.printRemainingShips();
+            ShipType myShip = chosenShip.userInput();
+            userFleet.keepTrack(myShip);
+
+            do{
+                RowCol userRowColumn = new RowCol();
+
+                System.out.println(userGrid.shipToString());
+
+                userRowColumn.getRowCol(input, output);// Determine rows and column of ship start
                 ShipOrientation orientation = orient.userInput();
-                data = new ProgramData(rowColumn.getRow(), rowColumn.getColumn() , myShip, orientation);
-                isInvalid = fleet.validPlace(data, grid.shipGrid);
+                data = new ProgramData(userRowColumn.getRow(), userRowColumn.getColumn() , myShip, orientation);
+                isInvalid = userFleet.validPlace(data, userGrid.shipGrid);
             } while (isInvalid);
 
 
-            placement.placeMyShip(data, grid.shipGrid);
+            placement.placeMyShip(data, userGrid.shipGrid);
 
-            System.out.println(grid.shipToString());
+            System.out.println(userGrid.shipToString());
 
 
 
