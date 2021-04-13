@@ -80,6 +80,19 @@ public class Main {
 
 
         }
+
+        //Guessing section
+        MakeGuess newGuess = new MakeGuess();
+        GuessData guess = new GuessData();
+
+        newGuess.makeGuess(input,output);
+        // Make guess ==> Guess Class? > called MakeGuess // is there a way to have make guess and RowCol class have overlap
+        // Class or function that updates cellstate grid -> Cellstate Update
+        // Check if ship is there or not or if square is already a MISS or a SUNK ==> Check grid class? -> CheckCellState
+        // If ship is there, hit ==> Effect class
+        // If ship is not there, miss ==> effect class
+        // Check if ship is fully hit ==> verification?
+        // change ship occupied space to sunk ==> effect class
     }
 
 }

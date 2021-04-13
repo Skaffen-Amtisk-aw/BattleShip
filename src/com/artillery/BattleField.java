@@ -8,8 +8,8 @@ public class BattleField {
     private static final int SIZE = 10; // to keep this from being attached to object and potentially data intensive we use "static".
     // This means that this ia variable that holds it's own memory space that then determines the characteristics of all battlefields
     // "final" is the keyword telling java compiler that this variable is set and cannot be changed by anyone using this program
-    public CellState[][] battleField;
-    public ShipType[][] shipGrid;// declare array that is for holding guesses i.e. cellstate
+    public CellState[][] battleField; // declare array that is for holding guesses i.e. cellstate
+    public ShipType[][] shipGrid;
     public BattleField(){ //constructor
        battleField = new CellState[SIZE][SIZE]; //'new' used whenever you want to allocate.. CellState is an enum (enums allow to use this as datatype)
         for (int row = 0; row < SIZE; row++){

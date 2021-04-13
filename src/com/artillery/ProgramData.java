@@ -22,11 +22,10 @@ public class ProgramData {
     private int col;
     private ShipType boatType;
     private ShipOrientation orientation;
-    // private int SIZE = BattleField.getSIZE(); // focusing
+
 
     //game objects
 
-    //Include grid
 
     public ProgramData(int row, int col, ShipType boatType, ShipOrientation orientation){
         this.row = row;

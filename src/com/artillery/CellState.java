@@ -8,7 +8,7 @@ package com.artillery;
 
 public enum CellState {
 
-    OPEN, HIT, MISS, SUNK;
+    OPEN, SHIP, HIT, MISS, SUNK;
 
 
     public String toString() {
@@ -16,34 +16,17 @@ public enum CellState {
         return switch (this) {
 
             case OPEN -> "O";
-            case HIT -> "H";
+            case SHIP -> "B";
+            case HIT -> "X";
             case MISS -> "M";
             case SUNK -> "S";
 //Update to other parts of program required, this is OK
         };
     }
 
+
     // return state; //compiler yelled at me about missing return statement again. Is this a side effect of using switch??
 }
 
-//        if (this == OPEN) { //"this" is a keyword akin to "self" in python
-//            return "O";
-//        }
-//        else if (this == BATTLESHIP){
-//            String quidEst = battleParse(this, )
-//        }
-//        else if (this == HIT){
-//            return "H";
-//        }
-//        else if (this == MISS){
-//            return "M";
-//        }
-//        else if (this == SUNK){
-//            return "S";
-//        }
-//        else {
-//            return "INVALID";
-//        }
-//    }// Nextercise, look into switch statements and use that instead of "if..else"
-// }
+
 

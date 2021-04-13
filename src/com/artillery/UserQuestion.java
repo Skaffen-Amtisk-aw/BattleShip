@@ -5,5 +5,5 @@ public interface UserQuestion<T> { //want to describe general idea where we get 
 }
 
 //generics are a way of writing a class or interface such that you don't commit to either type until such a time that said entity is used
-// T is most common abbreviation meaning type, second most is U
-// <> contains all the types you'd liek to make generic
+// T is most common abbreviation meaning type, second most is U because... alphabet
+// <> contains all the types you'd like to make generic

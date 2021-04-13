@@ -13,7 +13,7 @@ public enum ShipType {
         };
     }
 
-    public String shipID() { // By moving this to Boat
+    public String shipID() {
         return switch (this) {
             case DESTROYER -> "DE";
             case CRUISER -> "CR";
